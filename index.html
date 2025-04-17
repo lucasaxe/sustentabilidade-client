@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copos Desperdiçados Unicamp</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontawesome/all.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+</head>
+<body>
+    <div class="container my-4">
+
+        <!-- Cabeçalho -->
+        <div class="row mb-4">
+            <div class="col text-center">
+                <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row">
+                    <img src="assets/images/favicon.png" alt="logo" class="img-fluid mb-2 mb-sm-0 me-sm-3" style="height: 50px;">
+                    <h1 class="fs-4 text-center text-sm-start mt-2">Copos Desperdiçados Unicamp</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total de copos -->
+        <div class="d-flex flex-wrap justify-content-center mt-5 mb-3 gap-3">
+                <div class="bloco text-center" id="total_copos">
+                    <div class="quantidade">Quantidade</div>
+                    <div class="numero" id="counter">0</div>
+                </div>
+        </div>
+
+        <!-- Botão adicionar copos -->
+        <div class="row mb-4 justify-content-center ">
+            <div class="col text-center ">
+                <h1 class="fs-4 text-center my-3">Você utilizou copo descartável?</h1>
+                <button class="btn btn-primary" id="utilizouCopo" onclick="incrementCount()">
+                    <i class="fa-solid fa-thumbs-up me-2"></i>Sim
+                </button>
+                <button class="btn btn-primary" id="economizouCopo" onclick="incrementCountEcono()">
+                    <i class="fa-solid fa-thumbs-down me-2"></i>Não
+                </button>
+            </div>
+        </div>
+
+        <!-- Estatísticas -->
+        <div>
+            <hr>
+
+            <div class="d-flex flex-wrap justify-content-center my-2 gap-3">
+                <!-- Total diário -->
+                <div class="bloco text-center ">
+                    <div class="quantidade">Copos Desperdiçados Hoje</div>
+                    <div class="numero" id="counterHoje">0</div>
+                </div>
+
+                <!-- Total semanal -->
+                <div class="bloco text-center bg-info">
+                    <div class="quantidade">Desperdiçados Esta Semana</div>
+                    <div class="numero" id="counterSemana">0</div>
+                </div>
+
+                <!-- Total mensal -->
+                <div class="bloco text-center bg-warning">
+                    <div class="quantidade">Desperdiçados Este Mês</div>
+                    <div class="numero" id="counterMes">0</div>
+                </div>
+
+                <!-- Total anual -->
+                <div class="bloco text-center bg-danger">
+                    <div class="quantidade">Desperdiçados Este Ano</div>
+                    <div class="numero" id="counterAno">0</div>
+                </div>
+                
+            </div>
+
+
+            <hr>
+            <div class="d-flex flex-wrap justify-content-center my-2 gap-3">
+                <!-- Total economizados -->
+                <div class="bloco text-center bg-success">
+                    <div class="quantidade">Total de Copos Economizados</div>
+                    <div class="numero" id="counterEcono">0</div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <hr>
+
+        <div class="row justify-content-center ">
+            <div class="col text-center ">
+                <h3 class="fs-6 text-center my-3 ">O site trabalha de acordo com os horários das refeições realizadas nos restaurantes universitários da unicamp, ou seja, é possível realizar registros entre: 6:30h-8:00h / 10:30h-14:00h / 17:30h-19-40h.</h3>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                <hr>
+                <p>Sustentabilidade Unicamp &copy; 2024</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>

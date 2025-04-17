@@ -1,0 +1,53 @@
+.bloco {
+    background-color: white; /* Cor de fundo do bloco */
+    padding: 20px; /* Espaçamento interno do bloco */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 200px; /* Largura do bloco */
+    text-align: center; /* Alinhamento do texto */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    min-width: 120px; /* Para evitar blocos muito pequenos */
+}
+
+.quantidade {
+    font-size: 1rem;
+    color: #333; /* Cor da fonte */
+    margin-bottom: 10px; /* Espaço abaixo da palavra 'quantidade' */
+    font-weight: bold; /* Peso da fonte */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.numero {
+    font-size: 1.25rem;
+    color: #000000; /* Cor azul para o número */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/*.edit_link {
+    cursor: pointer;
+}
+
+.edit_link:hover {
+    color: #5BC0DE;
+}
+
+.delete_link {
+    cursor: pointer;
+    color: rgb(176, 0, 0);
+}
+
+.delete_link:hover {
+    color: rgb(255, 66, 66);
+}*/
