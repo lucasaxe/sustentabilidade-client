@@ -36,7 +36,7 @@ function podeRegistrar() {
 async function incrementCount() {
     if(podeRegistrar()){
         // Faz a requisição POST para incrementar o número
-        const response = await fetch('http://localhost:3000/increment', { method: 'POST' });
+        const response = await fetch('https://sustentabilidade-server.onrender.com/increment', { method: 'POST' });
         const data = await response.json();
 
         // Salvar a data do clique no localStorage
@@ -59,7 +59,7 @@ async function incrementCount() {
 async function incrementCountEcono() {
     if(podeRegistrar()){
         // Faz a requisição POST para incrementar o número
-        const response = await fetch('http://localhost:3000/increment_econo', { method: 'POST' });
+        const response = await fetch('https://sustentabilidade-server.onrender.com/increment_econo', { method: 'POST' });
         const data = await response.json();
 
         // Salvar a data do clique no localStorage
@@ -81,26 +81,26 @@ async function incrementCountEcono() {
 
 async function loadCurrentCount() {
     // Faz a requisição GET para obter o número atual
-    const count = await fetch('http://localhost:3000/current-count');
+    const count = await fetch('https://sustentabilidade-server.onrender.com/current-count');
     const data = await count.json();
     document.getElementById('counter').textContent = data.count;
     
-    const count_today = await fetch('http://localhost:3000/current-day');
+    const count_today = await fetch('https://sustentabilidade-server.onrender.com/current-day');
     const data1 = await count_today.json(); 
     document.getElementById('counterHoje').textContent = data1.count_today;
 
-    const count_week = await fetch('http://localhost:3000/current-week');
+    const count_week = await fetch('https://sustentabilidade-server.onrender.com/current-week');
     const data2 = await count_week.json();     document.getElementById('counterSemana').textContent = data2.count_week; 
 
-    const count_month = await fetch('http://localhost:3000/current-month');
+    const count_month = await fetch('https://sustentabilidade-server.onrender.com/current-month');
     const data3 = await count_month.json(); 
     document.getElementById('counterMes').textContent = data3.count_month;
 
-    const count_year = await fetch('http://localhost:3000/current-year');
+    const count_year = await fetch('https://sustentabilidade-server.onrender.com/current-year');
     const data4 = await count_year.json();     
     document.getElementById('counterAno').textContent = data4.count_year;
 
-    const countEcono = await fetch('http://localhost:3000/current-econo');
+    const countEcono = await fetch('https://sustentabilidade-server.onrender.com/current-econo');
     const data5 = await countEcono.json();     
     document.getElementById('counterEcono').textContent = data5.countEcono;
 }
@@ -143,7 +143,7 @@ window.onload = () => {
 
 //====================================================================
 function get_username(id_user){
-    fetch(`http://localhost:3000/user/${id_user}`)
+    fetch(`https://sustentabilidade-server.onrender.com/user/${id_user}`)
     .then(response => {
         if(response.status === 200){
             return (response.json());
@@ -162,7 +162,7 @@ function get_username(id_user){
 
 //====================================================================
 function get_userTasks(id_user, status = "all"){
-    fetch(`http://localhost:3000/user/${id_user}/tasks/${status}`)
+    fetch(`https://sustentabilidade-server.onrender.com/user/${id_user}/tasks/${status}`)
     .then(response => {
         if(response.status === 200){
             return response.json();
@@ -236,7 +236,7 @@ function change_task_status(id_task){
     let status = document.querySelector("#task_status_" + id_task).value;
 
     //atualiza o status no banco de dados
-    fetch(`http://localhost:3000/user/tasks/update_status`, {
+    fetch(`https://sustentabilidade-server.onrender.com/user/tasks/update_status`, {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({id_task, status})
