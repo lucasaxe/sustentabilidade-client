@@ -1,18 +1,45 @@
 .bloco {
-    background-color: white; /* Cor de fundo do bloco */
-    padding: 20px; /* Espaçamento interno do bloco */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    width: 200px; /* Largura do bloco */
-    text-align: center; /* Alinhamento do texto */
+    color: black;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    min-width: 120px; /* Para evitar blocos muito pequenos */
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 120px;
+    max-width: 250px;
+    height: 100px;
+    box-sizing: border-box;
 }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.col-6 {
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    flex: 1 1 40%;
+    max-width: 250px;
+    min-width: 120px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+
 
 .quantidade {
     font-size: 1rem;
@@ -28,26 +55,59 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.5rem;
-    }
+
+
+/* Estilo do container que agrupa os alertas */
+#alert-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    width: 80%;
 }
 
-
-/*.edit_link {
-    cursor: pointer;
+/* Estilo do alerta */
+.custom-alert {
+    position: relative;
+    background-color: #6c757d;  /* Cor de fundo cinza */
+    color: white;               /* Cor do texto branca */
+    padding: 15px 30px;         /* Aumenta o padding para maior espaço */
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;         /* Centraliza o texto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-top: 10px;           /* Adiciona margem entre os alertas */
+    width: 100%;                 /* Definir largura padrão */
 }
 
-.edit_link:hover {
-    color: #5BC0DE;
+/* Alerta padrão (cinza) para horários fora do limite */
+.custom-alert.default {
+    background-color: #d3d3d3;
+    color: black;
 }
 
-.delete_link {
-    cursor: pointer;
-    color: rgb(176, 0, 0);
+/* Alerta de sucesso (verde) */
+.custom-alert.success {
+    background-color: #28a745;
+    color: white;
 }
 
-.delete_link:hover {
-    color: rgb(255, 66, 66);
-}*/
+/* Alerta de erro (vermelho) */
+.custom-alert.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Alerta visível */
+.custom-alert.show {
+    display: block;
+    opacity: 1;
+}

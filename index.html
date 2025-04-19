@@ -23,83 +23,134 @@
         </div>
 
         <!-- Total de copos -->
-        <div class="d-flex flex-wrap justify-content-center mt-5 mb-3 gap-3">
+
+        <!-- <div class="d-flex flex-wrap justify-content-center mt-5 mb-3 gap-3">
                 <div class="bloco text-center" id="total_copos">
                     <div class="quantidade">Quantidade</div>
                     <div class="numero" id="counter">0</div>
                 </div>
+        </div> -->
+
+        <div class="container my-4">
+            <div class="row justify-content-center my-2" >
+                <div class="col-6 col-md-3">
+                    <div class="bloco text-center" id="total_copos">
+                        <div class="quantidade">Quantidade</div>
+                        <div class="numero" id="counter">0</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Botão adicionar copos -->
         <div class="row mb-4 justify-content-center ">
             <div class="col text-center ">
                 <h1 class="fs-4 text-center my-3">Você utilizou copo descartável?</h1>
-                <button class="btn btn-primary" id="utilizouCopo" onclick="incrementCount()">
-                    <i class="fa-solid fa-thumbs-up me-2"></i>Sim
-                </button>
                 <button class="btn btn-primary" id="economizouCopo" onclick="incrementCountEcono()">
                     <i class="fa-solid fa-thumbs-down me-2"></i>Não
                 </button>
+
+                <button class="btn btn-primary" id="utilizouCopo" onclick="incrementCount()">
+                    <i class="fa-solid fa-thumbs-up me-2"></i>Sim
+                </button>
             </div>
         </div>
+
+        <hr>
+
+        <h1 class="fs-4 text-center my-3">Copos Desperdiçados</h1>
 
         <!-- Estatísticas -->
-        <div>
-            <hr>
-
-            <div class="d-flex flex-wrap justify-content-center my-2 gap-3">
-                <!-- Total diário -->
-                <div class="bloco text-center ">
-                    <div class="quantidade">Copos Desperdiçados Hoje</div>
-                    <div class="numero" id="counterHoje">0</div>
+        <div class="container my-4">
+            <div class="row justify-content-center my-2">
+                <!-- Linha 1: Copos Desperdiçados Hoje e Esta Semana -->
+                <div class="col-6 col-md-3">
+                    <div class="bloco text-center">
+                        <div class="quantidade">Hoje</div>
+                        <div class="numero" id="counterHoje">0</div>
+                    </div>
                 </div>
 
-                <!-- Total semanal -->
-                <div class="bloco text-center bg-info">
-                    <div class="quantidade">Desperdiçados Esta Semana</div>
-                    <div class="numero" id="counterSemana">0</div>
-                </div>
-
-                <!-- Total mensal -->
-                <div class="bloco text-center bg-warning">
-                    <div class="quantidade">Desperdiçados Este Mês</div>
-                    <div class="numero" id="counterMes">0</div>
-                </div>
-
-                <!-- Total anual -->
-                <div class="bloco text-center bg-danger">
-                    <div class="quantidade">Desperdiçados Este Ano</div>
-                    <div class="numero" id="counterAno">0</div>
-                </div>
-                
-            </div>
-
-
-            <hr>
-            <div class="d-flex flex-wrap justify-content-center my-2 gap-3">
-                <!-- Total economizados -->
-                <div class="bloco text-center bg-success">
-                    <div class="quantidade">Total de Copos Economizados</div>
-                    <div class="numero" id="counterEcono">0</div>
+                <div class="col-6 col-md-3">
+                    <div class="bloco text-center bg-info">
+                        <div class="quantidade">Esta Semana</div>
+                        <div class="numero" id="counterSemana">0</div>
+                    </div>
                 </div>
             </div>
 
+            <div class="row justify-content-center my-2">
+                <!-- Linha 2: Desperdiçados Este Mês e Este Ano -->
+                <div class="col-6 col-md-3">
+                    <div class="bloco text-center bg-warning">
+                        <div class="quantidade">Este Mês</div>
+                        <div class="numero" id="counterMes">0</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="bloco text-center bg-danger">
+                        <div class="quantidade">Este Ano</div>
+                        <div class="numero" id="counterAno">0</div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <hr>
+
+        <h1 class="fs-4 text-center my-3">Copos Economizados</h1>
+
+        <div class="container my-4">
+            <div class="row justify-content-center my-2">
+                <!-- Linha 3: Total Economizados -->
+                <div class="col-6 col-md-3">
+                    <div class="bloco text-center bg-success">
+                        <div class="quantidade">Total</div>
+                        <div class="numero" id="counterEcono">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
 
 
         <hr>
 
-        <div class="row justify-content-center ">
-            <div class="col text-center ">
-                <h3 class="fs-6 text-center my-3 ">O site trabalha de acordo com os horários das refeições realizadas nos restaurantes universitários da unicamp, ou seja, é possível realizar registros entre: 6:30h-8:00h / 10:30h-14:00h / 17:30h-19-40h.</h3>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <h2 class="fs-4 fw-bold my-3">Contribua com Sustentabilidade da Unicamp com a Unicopos!</h2>
+                    <p class="fs-5">
+                        Na <strong>Unicopos</strong>, o objetivo é incentivar a utilização de garrafas e canecas durante as refeições nos Restaurantes Universitários, reduzindo significativamente o desperdício de recursos e o impacto ambiental.
+                    </p>
+                    <p class="fs-5">
+                        Você pode realizar seus registros durante os horários das refeições dos Restaurantes Universitários da Unicamp:
+                    </p>
+                    <ul class="fs-5" style="list-style-type: none;">
+                        <li><strong>Café da manhã:</strong> das 7h00 às 8h30</li>
+                        <li><strong>Almoço:</strong> das 10h30 às 14h00</li>
+                        <li><strong>Jantar:</strong> das 17h30 às 19h45</li>
+                    </ul>
+                    <p class="fs-5">
+                        Seu compromisso com o meio ambiente é essencial, e com cada registro, você ajuda a reduzir o uso de plásticos descartáveis, promovendo o consumo consciente dentro da universidade.
+                    </p>
+                    <p class="fs-5">
+                        Participe dessa iniciativa que transforma pequenas ações em grandes resultados para o planeta! A <strong>Unicopos</strong> é mais do que um projeto — é uma forma de construir, juntos, um campus mais verde e consciente. Não deixe de fazer parte dessa mudança!
+                    </p>
+                </div>
             </div>
         </div>
+
 
         <!-- Footer -->
         <div class="row mt-3">
             <div class="col text-center">
                 <hr>
-                <p>Sustentabilidade Unicamp &copy; 2024</p>
+                <p>Lucas 'Adobe' Axe | Eng Comp &copy; 2024</p>
             </div>
         </div>
 
