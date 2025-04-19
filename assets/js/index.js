@@ -3,6 +3,8 @@
 //const API_URL = 'http://localhost:3000';
 const API_URL = 'https://sustentabilidade-server.onrender.com';
 
+const moment = require('moment-timezone');
+
 async function incrementCount() {
     const agora = moment().tz('America/Sao_Paulo');
     const horaAtual = agora.format('HH:mm'); // Formato "HH:mm"
@@ -14,7 +16,7 @@ async function incrementCount() {
         estaNoIntervalo(horaAtual, "17:30", "19:45");     // Jantar
 
     if (!emHorarioPermitido) {
-        showAlert("⚠️ Horário não permitido para registro.", "warning");
+        showAlert("Horário não permitido para registro.");
         return; // Não registra fora do horário permitido
     }
 
@@ -32,7 +34,7 @@ async function incrementCount() {
     }
 
     showAlert("⚠️ Atenção: Uso de copo descartável detectado!", "danger");
-    
+
     saveLastRegisterTime();
     disableButtons();
     loadCurrentCount();
@@ -49,7 +51,7 @@ async function incrementCountEcono() {
         estaNoIntervalo(horaAtual, "17:30", "19:45");     // Jantar
 
     if (!emHorarioPermitido) {
-        showAlert("⚠️ Horário não permitido para registro.", "warning");
+        showAlert("Horário não permitido para registro.");
         return; // Não registra fora do horário permitido
     }
 
@@ -163,8 +165,7 @@ async function blockIfAlreadyRegistered() {
 
     // Verificar se já se passaram 3 horas (3 horas = 3 * 60 * 60 * 1000 milissegundos)
     if (timeDifference < 3 * 60 * 60 * 1000) {
-        const timeLeft = (3 * 60 * 60 * 1000 - timeDifference) / 1000; // Tempo restante em segundos
-        showAlert(`⚠️ Você já registrou essa refeição!`, "danger");
+        showAlert(`⚠️ Você já registrou essa refeição!`);
         return true; // BLOQUEIA envio
     }
 
