@@ -2,7 +2,6 @@
 
 //const API_URL = 'http://localhost:3000';
 const API_URL = 'https://sustentabilidade-server.onrender.com';
-import moment from 'moment-timezone';
 
 async function incrementCount() {
     const agora = moment().tz('America/Sao_Paulo');
