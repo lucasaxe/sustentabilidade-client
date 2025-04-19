@@ -103,6 +103,16 @@ async function loadCurrentCount() {
     document.getElementById('counterEcono').textContent = data5.countEcono;
 }
 
+
+
+
+
+
+
+
+
+
+
 function showAlert(message, type = 'default') {
     const alertContainer = document.getElementById('alert-container') || createAlertContainer();
 
@@ -145,7 +155,14 @@ function createAlertContainer() {
 }
 
 
+
+
+
 const THREE_HOURS = 3 * 60 * 60 * 1000;
+
+const estaNoIntervalo = (horaAtual, horaInicial, horaFinal) => {
+    return horaAtual >= horaInicial && horaAtual < horaFinal;
+};
 
 function saveLastRegisterTime() {
     localStorage.setItem('lastRegisterTime', Date.now());
@@ -171,6 +188,7 @@ async function blockIfAlreadyRegistered() {
     return false;
 }
 
+
 function checkButtonStatus() {
     const lastTime = localStorage.getItem('lastRegisterTime');
     if (!lastTime) {
@@ -188,6 +206,16 @@ function checkButtonStatus() {
         setTimeout(enableButtons, timeLeft);
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 function disableButtons() {
     document.getElementById('utilizouCopo').disabled = true;
