@@ -1,3 +1,49 @@
+/* Logo */
+.logo {
+    height: 50px;
+    max-height: 3rem;
+    margin-top: 1rem;
+}
+
+.esquerda {
+    margin-right: 1rem;
+}
+
+.direita {
+    margin-left: 1rem;
+}
+
+/* Título */
+.first {
+    font-size: 1.7rem;
+    max-width: 600px; /* Título ocupa todo o espaço disponível */
+    text-align: center;
+    margin: 0;
+    flex-grow: 1; /* Faz o título crescer e ocupar o espaço restante */
+}
+
+/* Flex container */
+.d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Garante que as imagens fiquem nas extremidades */
+    width: 100%; /* Garante que o container ocupe toda a largura disponível */
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+    .d-flex {
+        justify-content: space-between; /* Mantém o alinhamento das imagens e do título */
+    }
+
+    .first {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
 .bloco {
     color: black;
     background-color: white;
