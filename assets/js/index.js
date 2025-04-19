@@ -231,5 +231,4 @@ function enableButtons() {
 
 window.onload = function() {
     loadCurrentCount();
-    checkButtonStatus(); // Verifica se pode habilitar ou não
 };
