@@ -4,26 +4,61 @@
 const API_URL = 'https://sustentabilidade-server.onrender.com';
 
 async function incrementCount() {
-    // Faz a requisição POST para incrementar o número
+    const agora = moment().tz('America/Sao_Paulo');
+    const horaAtual = agora.format('HH:mm'); // Formato "HH:mm"
+
+    // Verificar se está dentro de algum horário permitido
+    const emHorarioPermitido = 
+        estaNoIntervalo(horaAtual, "07:00", "08:30") ||   // Café da manhã
+        estaNoIntervalo(horaAtual, "10:30", "14:00") ||   // Almoço
+        estaNoIntervalo(horaAtual, "17:30", "19:45");     // Jantar
+
+    if (!emHorarioPermitido) {
+        showAlert("⚠️ Horário não permitido para registro.", "warning");
+        return; // Não registra fora do horário permitido
+    }
+
+    // Verifica se já passou o tempo permitido para o próximo registro
+    if (await blockIfAlreadyRegistered()) {
+        return; // Se já registrou, não continua
+    }
+
     const response = await fetch(`${API_URL}/increment`, { method: 'POST' });
 
-    if(!response.ok){
+    if (!response.ok) {
         const erro = await response.json();
-        showAlert(erro.message); // mostra "Horário não permitido."
+        showAlert(erro.message);
         return;
     }
 
-    const data = await response.json();
-
     showAlert("⚠️ Atenção: Uso de copo descartável detectado!", "danger");
-
-    document.getElementById('utilizouCopo').disabled = true;
-    document.getElementById('economizouCopo').disabled = true;
-
+    
+    saveLastRegisterTime();
+    disableButtons();
     loadCurrentCount();
 }
 
 async function incrementCountEcono() {
+    const agora = moment().tz('America/Sao_Paulo');
+    const horaAtual = agora.format('HH:mm'); // Formato "HH:mm"
+
+    // Verificar se está dentro de algum horário permitido
+    const emHorarioPermitido = 
+        estaNoIntervalo(horaAtual, "07:00", "08:30") ||   // Café da manhã
+        estaNoIntervalo(horaAtual, "10:30", "14:00") ||   // Almoço
+        estaNoIntervalo(horaAtual, "17:30", "19:45");     // Jantar
+
+    if (!emHorarioPermitido) {
+        showAlert("⚠️ Horário não permitido para registro.", "warning");
+        return; // Não registra fora do horário permitido
+    }
+
+    // Verifica se já passou o tempo permitido para o próximo registro
+    if (await blockIfAlreadyRegistered()) {
+        return; // Se já registrou, não continua
+    }
+
+
     // Faz a requisição POST para incrementar o número
     const response = await fetch(`${API_URL}/increment_econo`, { method: 'POST' });
 
@@ -37,9 +72,8 @@ async function incrementCountEcono() {
 
     showAlert("✅ Parabéns! Seu copo reutilizável faz a diferença.", "success");
 
-    document.getElementById('utilizouCopo').disabled = true;
-    document.getElementById('economizouCopo').disabled = true;
-
+    saveLastRegisterTime();
+    disableButtons();
     loadCurrentCount();
 }
 
@@ -68,12 +102,6 @@ async function loadCurrentCount() {
     const data5 = await countEcono.json();     
     document.getElementById('counterEcono').textContent = data5.countEcono;
 }
-
-
-// Carrega o número atual ao carregar a página
-window.onload = loadCurrentCount();
-
-
 
 function showAlert(message, type = 'default') {
     const alertContainer = document.getElementById('alert-container') || createAlertContainer();
@@ -115,3 +143,66 @@ function createAlertContainer() {
     document.body.appendChild(container);  // Você pode alterar onde deseja posicionar
     return container;
 }
+
+
+const THREE_HOURS = 3 * 60 * 60 * 1000;
+
+function saveLastRegisterTime() {
+    localStorage.setItem('lastRegisterTime', Date.now());
+}
+
+async function blockIfAlreadyRegistered() {
+    // Obter o horário do último registro no localStorage
+    const lastTime = localStorage.getItem('lastRegisterTime');
+    if (!lastTime) {
+        return false; // Nunca registrou antes, pode registrar
+    }
+
+    const now = Date.now(); // Obter o horário atual em milissegundos
+    const timeDifference = now - lastTime; // Diferença de tempo entre agora e o último registro
+
+    // Verificar se já se passaram 3 horas (3 horas = 3 * 60 * 60 * 1000 milissegundos)
+    if (timeDifference < 3 * 60 * 60 * 1000) {
+        const timeLeft = (3 * 60 * 60 * 1000 - timeDifference) / 1000; // Tempo restante em segundos
+        showAlert(`⚠️ Você já registrou essa refeição!`, "danger");
+        return true; // BLOQUEIA envio
+    }
+
+    // Se já passaram 3 horas, pode enviar
+    return false;
+}
+
+function checkButtonStatus() {
+    const lastTime = localStorage.getItem('lastRegisterTime');
+    if (!lastTime) {
+        enableButtons();
+        return;
+    }
+
+    const now = Date.now();
+    if (now - lastTime >= THREE_HOURS) {
+        enableButtons();
+    } else {
+        disableButtons();
+        const timeLeft = THREE_HOURS - (now - lastTime);
+        // Agenda para reabilitar automaticamente quando chegar 3 horas
+        setTimeout(enableButtons, timeLeft);
+    }
+}
+
+function disableButtons() {
+    document.getElementById('utilizouCopo').disabled = true;
+    document.getElementById('economizouCopo').disabled = true;
+}
+
+function enableButtons() {
+    document.getElementById('utilizouCopo').disabled = false;
+    document.getElementById('economizouCopo').disabled = false;
+    localStorage.removeItem('lastRegisterTime'); // Zera para nova contagem
+}
+
+
+window.onload = function() {
+    loadCurrentCount();
+    checkButtonStatus(); // Verifica se pode habilitar ou não
+};
