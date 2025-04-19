@@ -168,7 +168,6 @@
     body {
         background-size: 200% 200%;
         animation-duration: 10s;  /* Mais rápido */
-        height: 100vh;
     }
 }
 
@@ -178,11 +177,17 @@ body {
     background: linear-gradient(132deg, #2b2b2b,#2b2b2b,#2b2b2b, #214b64, #2b2b2b, #008d07,#2b2b2b, #266375, #2b2b2b);
     /*background: linear-gradient(132deg, #000000,#007500, #ffffff, #1bb41b, #000000, #4eec04, #ffffff, #41b484,#000000,#7dd12f, #ffffff, #01ff01);*/
     background-size: 300% 300%;
-    animation: BackgroundGradient 15s ease infinite;
+    animation: BackgroundGradient 15s infinite;
 }
 
 @keyframes BackgroundGradient {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 200% 50%; /* Aumenta o movimento para que a área se mova mais rapidamente */
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
