@@ -41,6 +41,10 @@
     }
 }
 
+.especial {
+    color: white;
+}
+
 
 
 
@@ -89,7 +93,7 @@
 
 .quantidade {
     font-size: 1rem;
-    color: #333; /* Cor da fonte */
+    color: #000000; /* Cor da fonte */
     margin-bottom: 10px; /* Espaço abaixo da palavra 'quantidade' */
     font-weight: bold; /* Peso da fonte */
     font-family: Arial, Helvetica, sans-serif;
@@ -156,4 +160,19 @@
 .custom-alert.show {
     display: block;
     opacity: 1;
+}
+
+
+body {
+    color: rgb(196, 196, 196);
+    background: linear-gradient(132deg, #2b2b2b,#00a308, #2b2b2b, #216455,#2b2b2b, #266375, #2b2b2b, #11248f);
+    /*background: linear-gradient(132deg, #000000,#007500, #ffffff, #1bb41b, #000000, #4eec04, #ffffff, #41b484,#000000,#7dd12f, #ffffff, #01ff01);*/
+    background-size: 700% 700%;
+    animation: BackgroundGradient 30s ease infinite;
+}
+
+@keyframes BackgroundGradient {
+0% {background-position: 0% 50%;}
+50% {background-position: 100% 50%;}
+100% {background-position: 0% 50%;}
 }
