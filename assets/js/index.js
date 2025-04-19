@@ -34,7 +34,7 @@ async function incrementCount() {
     showAlert("⚠️ Atenção: Uso de copo descartável detectado!", "danger");
 
     saveLastRegisterTime();
-    disableButtons();
+    //disableButtons();
     loadCurrentCount();
 }
 
@@ -73,7 +73,7 @@ async function incrementCountEcono() {
     showAlert("✅ Parabéns! Seu copo reutilizável faz a diferença.", "success");
 
     saveLastRegisterTime();
-    disableButtons();
+    //disableButtons();
     loadCurrentCount();
 }
 
