@@ -1,6 +1,6 @@
 //javascript do index.html
 
-const API_URL = config.API_URL;
+const API_URL = CONFIG.API_URL;
 
 async function incrementCount() {
     const agora = moment().tz('America/Sao_Paulo');
