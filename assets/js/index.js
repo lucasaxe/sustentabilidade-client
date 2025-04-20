@@ -181,7 +181,7 @@ async function blockIfAlreadyRegistered() {
 
     // Verificar se já se passaram 3 horas (3 horas = 3 * 60 * 60 * 1000 milissegundos)
     if (timeDifference < 3 * 60 * 60 * 1000) {
-        showAlert(`⚠️ Você já registrou essa refeição!`);
+        showAlert(`⚠️ Você já realizou seu registro nessa refeição!`);
         return true; // BLOQUEIA envio
     }
 
