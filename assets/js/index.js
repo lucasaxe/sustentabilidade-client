@@ -1,6 +1,8 @@
 //javascript do index.html
 
-const API_URL = CONFIG.API_URL;
+//API_URL = 'http://localhost:3000';
+//API_URL = 'https://sustentabilidade-server.onrender.com';
+API_URL = 'https://sustentabilidade-server.vercel.app';
 
 async function incrementCount() {
     const agora = moment().tz('America/Sao_Paulo');
